@@ -23,7 +23,7 @@ Listados:
 
 ## **Modelo de Datos**
 
-![DER](https://user-images.githubusercontent.com/81445495/160951131-0bf635e6-80ce-4a22-aae8-3f5ebb6fb014.png)
+![DER](https://user-images.githubusercontent.com/81445495/163027644-68f0ff9e-9c54-48b7-9c9c-cc6e71dd4198.jpg)
 
 ### Casos de uso (Resumen)
 - **Reservar estadia**
