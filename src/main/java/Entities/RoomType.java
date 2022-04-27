@@ -2,7 +2,7 @@ package main.java.Entities;
 
 public class RoomType {
     private int id;
-    private String description;
+    private String typeName;
     private int capacity;
 
     public int getId() {
@@ -13,12 +13,12 @@ public class RoomType {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getType_name() {
+        return typeName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setType_name(String type_name) {
+        this.typeName = type_name;
     }
 
     public int getCapacity() {

@@ -3,18 +3,25 @@ package main.java.Entities;
 import java.util.Date;
 
 public class Person {
+    private int id;
     private String dni;
-    private String name;
-    private String surname;
+    private String firstName;
+    private String lastName;
     private Date birthdate;
     private String email;
     private String phone;
-    private String username;
-    private String password;
-
-    private enum idPersonType{
+    private String personType;
+    private enum personType{
         Admin,
-        User
+        Guest
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDni() {
@@ -25,20 +32,20 @@ public class Person {
         this.dni = dni;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String first_name) {
+        this.firstName = first_name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String last_name) {
+        this.lastName = last_name;
     }
 
     public Date getBirthdate() {
@@ -65,19 +72,11 @@ public class Person {
         this.phone = phone;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPersonType() {
+        return personType;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPersonType(String personType) {
+        this.personType = personType;
     }
 }

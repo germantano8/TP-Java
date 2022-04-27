@@ -2,7 +2,7 @@ package main.java.Entities;
 
 public class Service {
     private int id;
-    private String description;
+    private String serviceName;
 
     public int getId() {
         return id;
@@ -12,11 +12,11 @@ public class Service {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getService_name() {
+        return serviceName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setService_name(String service_name) {
+        this.serviceName = service_name;
     }
 }
