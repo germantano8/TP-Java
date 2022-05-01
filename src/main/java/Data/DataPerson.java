@@ -10,7 +10,7 @@ public class DataPerson {
         ResultSet rs=null;
         LinkedList<Person> personas= new LinkedList<>();
 
-        stmt= DbConnector.getInstancia().getConn().createStatement();
+        stmt= DbConnector.getInstance().getConn().createStatement();
         rs= stmt.executeQuery("select first_name from person");
 
         while(rs.next()){
