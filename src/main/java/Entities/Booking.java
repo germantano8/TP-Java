@@ -1,13 +1,13 @@
 package main.java.Entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Booking {
     private int bookingId;
-    private Date dateBooking;
-    private Date dateFrom;
-    private Date dateTo;
-    private int dateCancel;
+    private LocalDate dateBooking;
+    private LocalDate dateFrom;
+    private LocalDate dateTo;
+    private LocalDate dateCancel;
     private String status;
     private double totalPrice;
     private int roomId;
@@ -28,35 +28,35 @@ public class Booking {
         this.bookingId = bookingId;
     }
 
-    public Date getDateBooking() {
+    public LocalDate getDateBooking() {
         return dateBooking;
     }
 
-    public void setDateBooking(Date dateBooking) {
+    public void setDateBooking(LocalDate dateBooking) {
         this.dateBooking = dateBooking;
     }
 
-    public Date getDateFrom() {
+    public LocalDate getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(Date dateFrom) {
+    public void setDateFrom(LocalDate dateFrom) {
         this.dateFrom = dateFrom;
     }
 
-    public Date getDateTo() {
+    public LocalDate getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Date dateTo) {
+    public void setDateTo(LocalDate dateTo) {
         this.dateTo = dateTo;
     }
 
-    public int getDateCancel() {
+    public LocalDate getDateCancel() {
         return dateCancel;
     }
 
-    public void setDateCancel(int dateCancel) {
+    public void setDateCancel(LocalDate dateCancel) {
         this.dateCancel = dateCancel;
     }
 
