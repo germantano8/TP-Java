@@ -3,7 +3,6 @@ package main.java.Entities;
 public class Room {
     private int roomId;
     private int roomNumber;
-    private int floor;
     private String status;
     private int roomTypeId;
 
@@ -26,14 +25,6 @@ public class Room {
 
     public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
-    }
-
-    public int getFloor() {
-        return floor;
-    }
-
-    public void setFloor(int floor) {
-        this.floor = floor;
     }
 
     public String getStatus() {
