@@ -19,13 +19,11 @@ public class DataRoomTypePrice {
         String query = "select * from room_type_price";
         Statement stmt = DbConnector.getInstance().getConn().createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        if(rs != null){
-            while(rs.next()){
-                rtp.add(mapRoomTypePrice(rs));
-            }
+        while(rs.next()){
+            rtp.add(mapRoomTypePrice(rs));
         }
-        if(rs!=null){rs.close();}
-        if(stmt!=null){stmt.close();}
+        rs.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
 
         return rtp;
@@ -37,20 +35,17 @@ public class DataRoomTypePrice {
         PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement(query);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
-        if(rs!=null && rs.next()) rtp = mapRoomTypePrice(rs);
+        if(rs.next()) rtp = mapRoomTypePrice(rs);
 
-        if(rs!=null)rs.close();
-        if(stmt!=null)stmt.close();
+        rs.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
 
         return rtp;
     }
 
     public void addRoomTypePrice(RoomTypePrice rtp) throws SQLException{
-        PreparedStatement stmt = null;
-        ResultSet keyResultSet = null;
-
-        stmt=DbConnector.getInstance().getConn().prepareStatement(
+        PreparedStatement stmt=DbConnector.getInstance().getConn().prepareStatement(
                 "insert into room_type_price(date_from, price, room_type_id) values(?, ?, ?)",
                 PreparedStatement.RETURN_GENERATED_KEYS
         );
@@ -60,27 +55,25 @@ public class DataRoomTypePrice {
         stmt.setInt(3, rtp.getRoomTypeId());
         stmt.executeUpdate();
 
-        keyResultSet = stmt.getGeneratedKeys();
-        if(keyResultSet != null && keyResultSet.next()){
+        ResultSet keyResultSet = stmt.getGeneratedKeys();
+        if(keyResultSet.next()){
             rtp.setDate_from(keyResultSet.getDate(1));
             rtp.setPrice(keyResultSet.getDouble(2));
             rtp.setRoomTypeId(keyResultSet.getInt(3));
         }
-        if(keyResultSet!=null) keyResultSet.close();
-        if(stmt!=null) stmt.close();
+        keyResultSet.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
     }
 
     public void deleteRoomTypePrice(RoomTypePrice rtp)throws SQLException{
-        PreparedStatement stmt=null;
-
-        stmt = DbConnector.getInstance().getConn().prepareStatement("delete from room_type_price where room_type_id = ? and date_from = ?");
+        PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement("delete from room_type_price where room_type_id = ? and date_from = ?");
 
         stmt.setInt(1, rtp.getRoomTypeId());
         stmt.setDate(2, (Date)rtp.getDate_from());
         stmt.executeUpdate();
 
-        if(stmt!=null) {stmt.close();}
+        stmt.close();
         DbConnector.getInstance().releaseConn();
     }
 

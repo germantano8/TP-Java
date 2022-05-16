@@ -21,13 +21,11 @@ public class DataRoom {
         String query = "select * from room";
         Statement stmt = DbConnector.getInstance().getConn().createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        if(rs!=null){
-            while(rs.next()){
-                rooms.add(mapRoom(rs))
-            }
+        while(rs.next()){
+            rooms.add(mapRoom(rs))
         }
-        if(rs!=null)rs.close();
-        if(stmt!=null)stmt.close();
+        rs.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
 
         return rooms;
@@ -39,17 +37,17 @@ public class DataRoom {
         PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement(query);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
-        if(rs != null && rs.next()) oneRoom = mapRoom(rs);
+        if(rs.next()) oneRoom = mapRoom(rs);
 
-        if(rs != null) {rs.close();}
-        if(stmt != null) {stmt.close();}
+        rs.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
+
+        return oneRoom;
     }
 
     public void addRoom(Room r) throws SQLException{
-        PreparedStatement stmt= null;
-        ResultSet keyResultSet=null;
-        stmt=DbConnector.getInstance().getConn().prepareStatement(
+        PreparedStatement stmt=DbConnector.getInstance().getConn().prepareStatement(
                 "insert into room(room_number, status, room_type_id) values(?, ?, ?)",
                 PreparedStatement.RETURN_GENERATED_KEYS
         );
@@ -58,20 +56,19 @@ public class DataRoom {
         stmt.setInt(3, r.getRoomId());
         stmt.executeUpdate();
 
-        keyResultSet = stmt.getGeneratedKeys();
-        if(keyResultSet!=null && keyResultSet.next()){
+        ResultSet keyResultSet = stmt.getGeneratedKeys();
+        if(keyResultSet.next()){
             r.setRoomNumber(keyResultSet.getInt(1));
             r.setStatus(keyResultSet.getString(2));
             r.setRoomTypeId(keyResultSet.getInt(3));
         }
-        if(keyResultSet!=null) keyResultSet.close();
-        if(stmt!=null) stmt.close();
+        keyResultSet.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
     }
 
     public void updateRoom(Room r) throws SQLException{
-        PreparedStatement stmt=null;
-        stmt = DbConnector.getInstance().getConn().prepareStatement("" +
+        PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement("" +
                 "update room set room_number=?, status=?, room_type_id=? where room_id=?");
         stmt.setInt(1, r.getRoomNumber());
         stmt.setString(2, r.getStatus());
@@ -84,11 +81,10 @@ public class DataRoom {
     }
 
     public void deleteRoom(Room r) throws SQLException{
-        PreparedStatement stmt=null;
-        stmt = DbConnector.getInstance().getConn().prepareStatement("delete from room where room_id=?");
+        PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement("delete from room where room_id=?");
         stmt.setInt(1, r.getRoomId());
         stmt.executeUpdate();
-        if(stmt!=null) {stmt.close();}
+        stmt.close();
         DbConnector.getInstance().releaseConn();
     }
 
