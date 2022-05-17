@@ -46,8 +46,7 @@ public class DataRoomTypePrice {
 
     public void addRoomTypePrice(RoomTypePrice rtp) throws SQLException{
         PreparedStatement stmt=DbConnector.getInstance().getConn().prepareStatement(
-                "insert into room_type_price(date_from, price, room_type_id) values(?, ?, ?)",
-                PreparedStatement.RETURN_GENERATED_KEYS
+                "insert into room_type_price(date_from, price, room_type_id) values(?, ?, ?)"
         );
 
         stmt.setDate(1, (Date)rtp.getDate_from());
