@@ -1,5 +1,6 @@
 package main.java.Entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Booking {
@@ -9,7 +10,7 @@ public class Booking {
     private LocalDate dateTo;
     private LocalDate dateCancel;
     private String status;
-    private double totalPrice;
+    private BigDecimal totalPrice;
     private int roomId;
     private int userId;
 
@@ -68,11 +69,11 @@ public class Booking {
         this.status = status;
     }
 
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 

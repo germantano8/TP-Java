@@ -67,7 +67,7 @@ public class DataBooking {
         stmt.setInt(9, b.getBookingId());
         stmt.executeUpdate();
 
-        if(stmt != null) stmt.close();
+        stmt.close();
         DbConnector.getInstance().releaseConn();
     }
 
@@ -90,7 +90,7 @@ public class DataBooking {
         b.setDateTo(rs.getDate("date_to").toLocalDate());
         b.setRoomId(rs.getInt("room_id"));
         b.setStatus(rs.getString("status"));
-        b.setTotalPrice(rs.getDouble("total_price"));
+        b.setTotalPrice(rs.getBigDecimal("total_price"));
         b.setUserId(rs.getInt("user_id"));
         return b;
     }
