@@ -55,7 +55,6 @@ public class DataRoomType {
         ResultSet keyResultSet = stmt.getGeneratedKeys();
         if(keyResultSet.next()){
             rt.setId(keyResultSet.getInt(1));
-            rt.setTypeName(keyResultSet.getString(2));
         }
 
         keyResultSet.close();

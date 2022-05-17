@@ -1,8 +1,6 @@
 package main.java.Data;
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import main.java.Entities.*;
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 
 public class DataRoom {
@@ -22,7 +20,7 @@ public class DataRoom {
         Statement stmt = DbConnector.getInstance().getConn().createStatement();
         ResultSet rs = stmt.executeQuery(query);
         while(rs.next()){
-            rooms.add(mapRoom(rs))
+            rooms.add(mapRoom(rs));
         }
         rs.close();
         stmt.close();
@@ -58,9 +56,7 @@ public class DataRoom {
 
         ResultSet keyResultSet = stmt.getGeneratedKeys();
         if(keyResultSet.next()){
-            r.setRoomNumber(keyResultSet.getInt(1));
-            r.setStatus(keyResultSet.getString(2));
-            r.setRoomTypeId(keyResultSet.getInt(3));
+            r.setRoomId(keyResultSet.getInt(1));
         }
         keyResultSet.close();
         stmt.close();

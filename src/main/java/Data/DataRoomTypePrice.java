@@ -55,13 +55,6 @@ public class DataRoomTypePrice {
         stmt.setInt(3, rtp.getRoomTypeId());
         stmt.executeUpdate();
 
-        ResultSet keyResultSet = stmt.getGeneratedKeys();
-        if(keyResultSet.next()){
-            rtp.setDate_from(keyResultSet.getDate(1));
-            rtp.setPrice(keyResultSet.getDouble(2));
-            rtp.setRoomTypeId(keyResultSet.getInt(3));
-        }
-        keyResultSet.close();
         stmt.close();
         DbConnector.getInstance().releaseConn();
     }
