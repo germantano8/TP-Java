@@ -13,12 +13,12 @@ public class RoomType {
         this.id = id;
     }
 
-    public String getType_name() {
+    public String getTypeName() {
         return typeName;
     }
 
-    public void setType_name(String type_name) {
-        this.typeName = type_name;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
     public int getCapacity() {
