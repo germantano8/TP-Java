@@ -62,7 +62,7 @@ public class DataBooking {
         query = "update booking set date_booking = ?, date_cancel = ?, date_from = ?, date_to = ?," +
                 " room_id = ?, status = ?, total_price = ?, user_id = ?" +
                 " where booking_id = ?";
-        PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement(query);
+        PreparedStatement stmt=DbConnector.getInstance().getConn().prepareStatement(query);
         mapStatement(b, stmt);
         stmt.setInt(9, b.getBookingId());
         stmt.executeUpdate();
