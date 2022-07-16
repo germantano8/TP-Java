@@ -22,7 +22,11 @@ public class LogicRoomType {
     }
 
     public void addRoomType(RoomType rt) throws SQLException{
-        drt.addRoomType(rt);
+        if(rt.getTypeName().length() > 0 && rt.getTypeName().length() < 40 && rt.getCapacity() > 0 && rt.getCapacity() < 5){
+            drt.addRoomType(rt);
+        }else{
+            // TODO
+        }
     }
 
     public void updateRoomType(RoomType rt) throws SQLException{
