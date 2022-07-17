@@ -44,6 +44,21 @@ public class DataRoom {
         return oneRoom;
     }
 
+    public Room getOneByNumber(int number) throws SQLException{
+        Room oneRoom = new Room();
+        String query = "select * from room where room_number = ?";
+        PreparedStatement stmt = DbConnector.getInstance().getConn().prepareStatement(query);
+        stmt.setInt(1, number);
+        ResultSet rs = stmt.executeQuery();
+        if(rs.next()) oneRoom = mapRoom(rs);
+
+        rs.close();
+        stmt.close();
+        DbConnector.getInstance().releaseConn();
+
+        return oneRoom;
+    }
+
     public void addRoom(Room r) throws SQLException{
         PreparedStatement stmt=DbConnector.getInstance().getConn().prepareStatement(
                 "insert into room(room_number, status, room_type_id) values(?, ?, ?)",

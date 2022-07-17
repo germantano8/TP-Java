@@ -24,7 +24,7 @@ public class LogicRoom {
     public void addRoom(Room r) throws SQLException{
         RoomType rt = new RoomType();
         rt = new DataRoomType().getOne(r.getRoomTypeId());
-        if(r.getRoomNumber() > 0 && r.getRoomNumber() < 1000 && rt != null){
+        if(r.getRoomNumber() > 0 && r.getRoomNumber() < 1000 && rt != null && new DataRoom().getOneByNumber(r.getRoomId()) == null){
             dr.addRoom(r);
         }else{
             // TODO
