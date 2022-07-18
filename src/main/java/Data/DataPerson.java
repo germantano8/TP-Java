@@ -7,6 +7,19 @@ import main.java.Entities.*;
 
 public class DataPerson {
 
+    private Person mapPerson(ResultSet rs) throws SQLException {
+        Person p = new Person();
+        p.setId(rs.getInt("person_id"));
+        p.setDni(rs.getString("person_dni")); //en la base de datos no aparece el DNI.
+        p.setFirstName(rs.getString("first_name"));
+        p.setLastName(rs.getString("last_name"));
+        p.setBirthdate(rs.getDate("birthdate"));
+        p.setEmail(rs.getString("email"));
+        p.setPhone(rs.getString("phone"));
+        p.setPersonType(rs.getString("person_type"));
+
+        return p;
+    }
     public LinkedList<Person> getAll() throws SQLException {
         Statement stmt=null;
         ResultSet rs=null;
@@ -20,20 +33,6 @@ public class DataPerson {
         }
 
         return personas;
-    }
-
-    private Person mapPerson(ResultSet rs) throws SQLException {
-        Person p = new Person();
-        p.setId(rs.getInt("person_id"));
-        p.setDni(rs.getString("person_dni")); //en la base de datos no aparece el DNI.
-        p.setFirstName(rs.getString("first_name"));
-        p.setLastName(rs.getString("last_name"));
-        p.setBirthdate(rs.getDate("birthdate"));
-        p.setEmail(rs.getString("email"));
-        p.setPhone(rs.getString("phone"));
-        p.setPersonType(rs.getString("person_type"));
-
-        return p;
     }
 
     public Person getOne(int id) throws SQLException{

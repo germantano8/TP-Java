@@ -10,6 +10,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DataUser {
+
+    private User mapUser(ResultSet rs) throws SQLException {
+        User u = new User();
+        u.setUserId(rs.getInt("user_id"));
+        u.setPersonId(rs.getInt("person_id"));
+        u.setPassword(rs.getString("password"));
+        u.setUsername(rs.getString("username"));
+
+        return u;
+    }
+
     public List<User> getAll() throws SQLException {
         LinkedList<User> usuarios = new LinkedList<>();
         String query = "select * from user";
@@ -25,15 +36,6 @@ public class DataUser {
         return usuarios;
     }
 
-    private User mapUser(ResultSet rs) throws SQLException {
-        User u = new User();
-        u.setUserId(rs.getInt("user_id"));
-        u.setPersonId(rs.getInt("person_id"));
-        u.setPassword(rs.getString("password"));
-        u.setUsername(rs.getString("username"));
-
-        return u;
-    }
 
     public User getOne(int id) throws SQLException{
         User oneUser = new User();

@@ -1,7 +1,5 @@
 package main.java.Data;
-
 import main.java.Entities.Service;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DataService {
+    private Service mapService(ResultSet rs) throws SQLException {
+        Service s = new Service();
+        s.setId(rs.getInt("service_id"));
+        s.setService_name(rs.getString("service_name"));
 
+        return s;
+    }
     public List<Service> getAll() throws SQLException {
         LinkedList<Service> Servicios = new LinkedList<>();
         String query = "select * from service";
@@ -25,15 +29,6 @@ public class DataService {
 
         return Servicios;
     }
-
-    private Service mapService(ResultSet rs) throws SQLException {
-        Service s = new Service();
-        s.setId(rs.getInt("service_id"));
-        s.setService_name(rs.getString("service_name"));
-
-        return s;
-    }
-
     public Service getOne(int id) throws SQLException{
         Service oneService = new Service();
         String query = "select * from service where service_id = ?";

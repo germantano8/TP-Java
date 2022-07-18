@@ -14,6 +14,14 @@ import java.util.List;
 
 public class DataServicePrice {
 
+    private ServicePrice mapServicePrice(ResultSet rs) throws SQLException {
+        ServicePrice sp = new ServicePrice();
+        sp.setServiceId(rs.getInt("service_id"));
+        sp.setPrice(rs.getDouble("price"));
+        sp.setDate_from(rs.getDate("price_from"));
+
+        return sp;
+    }
     public List<ServicePrice> getAll() throws SQLException {
         LinkedList<ServicePrice> preciosServicios = new LinkedList<>();
         String query = "select * from service_price";
@@ -27,15 +35,6 @@ public class DataServicePrice {
         DbConnector.getInstance().releaseConn();
 
         return preciosServicios;
-    }
-
-    private ServicePrice mapServicePrice(ResultSet rs) throws SQLException {
-        ServicePrice sp = new ServicePrice();
-        sp.setServiceId(rs.getInt("service_id"));
-        sp.setPrice(rs.getDouble("price"));
-        sp.setDate_from(rs.getDate("price_from"));
-
-        return sp;
     }
 
     public ServicePrice getOne(int id) throws SQLException{
