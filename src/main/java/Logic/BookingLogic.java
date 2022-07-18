@@ -22,10 +22,18 @@ public class BookingLogic {
     }
 
     public void addBooking(Booking b) throws SQLException {
+        if (b.getDateFrom().isAfter(b.getDateTo())) {
+            //TODO: throw new IllegalArgumentException("Fecha desde no puede ser mayor a fecha hasta");
+            return;
+        }
         data.addBooking(b);
     }
 
     public void updateBooking(Booking b) throws SQLException {
+        if (b.getDateFrom().isAfter(b.getDateTo())) {
+            //TODO: throw new IllegalArgumentException("Fecha desde no puede ser mayor a fecha hasta");
+            return;
+        }
         data.updateBooking(b);
     }
 
