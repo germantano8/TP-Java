@@ -27,7 +27,7 @@ public class LogicRoom {
         if(r.getRoomNumber() > 0 && r.getRoomNumber() < 1000 && rt != null && new DataRoom().getOneByNumber(r.getRoomId()) == null){
             dr.addRoom(r);
         }else{
-            // TODO
+            throw new SQLException("Número de habitación incorrecto o ya existente");
         }
     }
 
@@ -37,7 +37,7 @@ public class LogicRoom {
         if(r.getRoomNumber() > 0 && r.getRoomNumber() < 1000 && rt != null){
             dr.addRoom(r);
         }else{
-            // TODO
+            throw new SQLException("Número de habitación incorrecto o tipo de habitación incorrecto");
         }
     }
 

@@ -25,7 +25,7 @@ public class LogicRoomType {
         if(rt.getTypeName().length() > 0 && rt.getTypeName().length() < 40 && rt.getCapacity() > 0 && rt.getCapacity() < 5){
             drt.addRoomType(rt);
         }else{
-            // TODO
+            throw new SQLException("Datos incorrectos");
         }
     }
 

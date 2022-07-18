@@ -27,7 +27,7 @@ public class LogicRoomTypePrice {
         if(rtp.getPrice() > 0 && rtp.getDate_from().after(new Date())){
             drtp.addRoomTypePrice(rtp);
         }else{
-            // TODO
+            throw new SQLException("Fecha incorrecta");
         }
     }
 
